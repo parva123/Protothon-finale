@@ -65,9 +65,11 @@ export default {
 				}
 			},
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
-				serif: ['Georgia', 'serif'],
+				sans: ['Source Sans 3', 'system-ui', 'sans-serif'],
+				serif: ['Merriweather', 'Georgia', 'serif'],
 				mono: ['JetBrains Mono', 'monospace'],
+				playfair: ['Playfair Display', 'serif'],
+				source: ['Source Sans 3', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

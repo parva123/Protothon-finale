@@ -34,8 +34,8 @@ const PricingPlans = [
     name: "Premium",
     description: "Advanced tools for serious researchers and professionals",
     price: {
-      monthly: "$19.99",
-      yearly: "$199.99",
+      monthly: "$10",
+      yearly: "$100",
     },
     features: [
       { name: "AI Writing Assistant (Unlimited)", included: true },

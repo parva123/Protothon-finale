@@ -97,8 +97,8 @@ const Navbar = () => {
             to="/" 
             className="flex items-center space-x-2 font-serif text-xl md:text-2xl font-semibold"
           >
-            <span className="text-primary">Research</span>
-            <span>Owl</span>
+            <span className="text-primary">Nexus</span>
+            <span>AI</span>
           </Link>
 
           {/* Desktop Navigation */}

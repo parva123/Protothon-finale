@@ -23,7 +23,7 @@ const Hero = () => {
       {/* Background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-purple-500/5 blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
@@ -43,7 +43,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold leading-tight md:leading-tight tracking-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-playfair font-semibold leading-tight md:leading-tight tracking-tight mb-6"
           >
             Elevate Your Research with{' '}
             <span className="text-primary">AI-Powered</span> Intelligence
@@ -54,7 +54,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl text-gray-600 dark:text-gray-400 mb-8 md:mb-10"
+            className="text-xl font-source text-gray-600 dark:text-gray-400 mb-8 md:mb-10"
           >
             Streamline your academic workflow from literature review to publication with powerful AI tools designed for research integrity.
           </motion.p>
@@ -118,8 +118,8 @@ const Hero = () => {
           <circle cx="75" cy="75" r="75" fill="url(#paint0_linear)" />
           <defs>
             <linearGradient id="paint0_linear" x1="0" y1="0" x2="150" y2="150" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#3B82F6" stopOpacity="0.2" />
-              <stop offset="1" stopColor="#3B82F6" stopOpacity="0" />
+              <stop stopColor="#8B5CF6" stopOpacity="0.2" />
+              <stop offset="1" stopColor="#8B5CF6" stopOpacity="0" />
             </linearGradient>
           </defs>
         </svg>
@@ -130,8 +130,8 @@ const Hero = () => {
           <rect width="120" height="120" rx="24" fill="url(#paint1_linear)" />
           <defs>
             <linearGradient id="paint1_linear" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#3B82F6" stopOpacity="0.2" />
-              <stop offset="1" stopColor="#3B82F6" stopOpacity="0" />
+              <stop stopColor="#8B5CF6" stopOpacity="0.2" />
+              <stop offset="1" stopColor="#8B5CF6" stopOpacity="0" />
             </linearGradient>
           </defs>
         </svg>

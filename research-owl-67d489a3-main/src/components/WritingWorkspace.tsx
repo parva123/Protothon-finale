@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   File, Save, Share, CloudLightning, AlertTriangle, Book, 
   FileText, Download, Type, List, Highlighter, Quote, Link as LinkIcon, 
@@ -24,6 +24,8 @@ const WritingWorkspace = () => {
   const [activeSuggestion, setActiveSuggestion] = useState<string | null>(null);
   const [selectedText, setSelectedText] = useState<string>('');
   const [isAutoSaving, setIsAutoSaving] = useState<boolean>(false);
+  const autoSaveTimeoutRef = useRef<number | null>(null);
+  const lastSaveTimeRef = useRef<number>(0);
 
   // Sample AI suggestions
   const aiSuggestions = [
@@ -66,13 +68,31 @@ const WritingWorkspace = () => {
     setActiveSuggestion(null);
   };
 
-  // Simulate auto-saving
+  // Simulate auto-saving with a rate limit
   const triggerAutoSave = () => {
-    setIsAutoSaving(true);
-    setTimeout(() => {
-      setIsAutoSaving(false);
-      toast.success("Document saved automatically");
-    }, 1500);
+    // Clear any existing timeout
+    if (autoSaveTimeoutRef.current) {
+      window.clearTimeout(autoSaveTimeoutRef.current);
+    }
+
+    // Only proceed if we're not already saving and it's been at least 5 seconds since the last save
+    const now = Date.now();
+    if (!isAutoSaving && now - lastSaveTimeRef.current > 5000) {
+      setIsAutoSaving(true);
+      
+      // Set a timeout to simulate saving and update state
+      autoSaveTimeoutRef.current = window.setTimeout(() => {
+        setIsAutoSaving(false);
+        lastSaveTimeRef.current = Date.now();
+        // Only show a toast if it's been more than 10 seconds since the last save notification
+        if (now - lastSaveTimeRef.current > 10000) {
+          toast.success("Document saved automatically", {
+            id: "document-saved", // Use a consistent ID to prevent duplicate toasts
+          });
+        }
+        autoSaveTimeoutRef.current = null;
+      }, 1500);
+    }
   };
 
   // Handle content change with debounced auto-save
@@ -81,10 +101,15 @@ const WritingWorkspace = () => {
     
     // Debounced auto-save
     if (!isAutoSaving) {
-      const timer = setTimeout(() => {
+      // Clear any existing timeout
+      if (autoSaveTimeoutRef.current) {
+        window.clearTimeout(autoSaveTimeoutRef.current);
+      }
+      
+      // Set a new timeout
+      autoSaveTimeoutRef.current = window.setTimeout(() => {
         triggerAutoSave();
       }, 2000);
-      return () => clearTimeout(timer);
     }
   };
 
